@@ -53,6 +53,15 @@ secrets1  secrets2  secrets3
 ~# 
 ```
 
+```powershell
+$process = New-Object System.Diagnostics.Process
+$process.StartInfo.FileName = "C:\Windows\System32\cmd.exe"
+$process.StartInfo.Arguments = '/c "(echo secrets1 & echo secrets2 & echo secrets3) | C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -ExecutionPolicy Unrestricted -EncodedCommand JABwAGEAcwBzAHcAbwByAGQAMQAgAD0AIABSAGUAYQBkAC0ASABvAHMAdAAgACIATQB5ACAAcwBlAGMAcgBlAHQAIAAxACAAKABuAG8AdAAgAGkAbgAgAHAAYQByAGEAbQBlAHQAZQByAHMALAAgAG4AbwB0ACAAaQBuACAAcABvAHcAZQByAHMAaABlAGwAbAAgAGgAaQBzAHQAbwByAHkALAAgAG4AbwB0ACAAaQBuACAAbABvAGcAcwApACIACgAkAHAAYQBzAHMAdwBvAHIAZAAyACAAPQAgAFIAZQBhAGQALQBIAG8AcwB0ACAAIgBNAHkAIABzAGUAYwByAGUAdAAgADIAIAAoAG4AbwB0ACAAaQBuACAAcABhAHIAYQBtAGUAdABlAHIAcwAsACAAbgBvAHQAIABpAG4AIABwAG8AdwBlAHIAcwBoAGUAbABsACAAaABpAHMAdABvAHIAeQAsACAAbgBvAHQAIABpAG4AIABsAG8AZwBzACkAIgAKACQAcABhAHMAcwB3AG8AcgBkADMAIAA9ACAAUgBlAGEAZAAtAEgAbwBzAHQAIAAiAE0AeQAgAHMAZQBjAHIAZQB0ACAAMwAgACgAbgBvAHQAIABpAG4AIABwAGEAcgBhAG0AZQB0AGUAcgBzACwAIABuAG8AdAAgAGkAbgAgAHAAbwB3AGUAcgBzAGgAZQBsAGwAIABoAGkAcwB0AG8AcgB5ACwAIABuAG8AdAAgAGkAbgAgAGwAbwBnAHMAKQAiAAoAZQBjAGgAbwAgACIAJABwAGEAcwBzAHcAbwByAGQAMQAgACQAcABhAHMAcwB3AG8AcgBkADIAIAAkAHAAYQBzAHMAdwBvAHIAZAAzACIACgA="'
+$process.StartInfo.UseShellExecute = $false
+$process.StartInfo.RedirectStandardInput = $true
+$_ = $process.Start()
+```
+
 ## Licence
 
 Licensed under the [GPL, version 3](https://www.gnu.org/licenses/).

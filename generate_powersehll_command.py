@@ -33,11 +33,11 @@ script = arguments.file.read()
 arguments.file.close()
 
 if arguments.as_process:
-	stdout.write(r'C:\Windows\System32\cmd.exe /c ')
+	stdout.write(r'C:\Windows\System32\cmd.exe /c "')
 
 if arguments.inputs:
 	inputs = '(echo ' + ' & echo '.join(arguments.inputs) + ') | '
 	stdout.write(inputs)
 
-print(r"C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -ExecutionPolicy Unrestricted -EncodedCommand", b64encode(script.encode('utf-16-le')).decode())
+print(r"C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -ExecutionPolicy Unrestricted -EncodedCommand", b64encode(script.encode('utf-16-le')).decode() + ('"' if arguments.as_process else ''))
 exit(0)
